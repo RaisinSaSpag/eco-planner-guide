@@ -3,6 +3,7 @@ import { Search, Recycle, MapPin, Calendar, BookOpen, Smartphone, Monitor, Zap, 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-bg.jpg';
 
 const Index = () => {
@@ -82,18 +83,24 @@ const Index = () => {
             </div>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-                <Recycle className="mr-2 h-5 w-5" />
-                Browse Encyclopedia
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                <MapPin className="mr-2 h-5 w-5" />
-                Find Centers
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                <Calendar className="mr-2 h-5 w-5" />
-                Plan Disposal
-              </Button>
+              <Link to="/encyclopedia">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90">
+                  <Recycle className="mr-2 h-5 w-5" />
+                  Browse Encyclopedia
+                </Button>
+              </Link>
+              <Link to="/centers">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+                  <MapPin className="mr-2 h-5 w-5" />
+                  Find Centers
+                </Button>
+              </Link>
+              <Link to="/planner">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Plan Disposal
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -125,17 +132,19 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {categories.map((category, index) => (
-              <Card key={index} className="group hover:shadow-eco transition-all duration-300 cursor-pointer bg-gradient-card border-0">
-                <CardHeader className="text-center pb-2">
-                  <category.icon className={`h-12 w-12 mx-auto mb-4 ${category.color} group-hover:scale-110 transition-transform duration-300`} />
-                  <CardTitle className="text-xl">{category.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <CardDescription className="text-base">
-                    {category.count} items available
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <Link key={index} to="/encyclopedia">
+                <Card className="group hover:shadow-eco transition-all duration-300 cursor-pointer bg-gradient-card border-0 h-full">
+                  <CardHeader className="text-center pb-2">
+                    <category.icon className={`h-12 w-12 mx-auto mb-4 ${category.color} group-hover:scale-110 transition-transform duration-300`} />
+                    <CardTitle className="text-xl">{category.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <CardDescription className="text-base">
+                      {category.count} items available
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -153,41 +162,43 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {featuredItems.map((item, index) => (
-              <Card key={index} className="hover:shadow-card transition-all duration-300 cursor-pointer">
-                <CardHeader>
-                  <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-xl">{item.name}</CardTitle>
-                    <div className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      item.impact === 'Critical' ? 'bg-destructive/20 text-destructive' :
-                      item.impact === 'Very High' ? 'bg-orange-100 text-orange-700' :
-                      'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {item.impact} Impact
-                    </div>
-                  </div>
-                  <CardDescription>{item.category}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div>
-                      <div className="font-medium text-sm mb-1">Disposal Method:</div>
-                      <div className="text-sm text-muted-foreground">{item.disposal}</div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1">
-                        <Recycle className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Recyclable</span>
+              <Link key={index} to="/encyclopedia">
+                <Card className="hover:shadow-card transition-all duration-300 cursor-pointer h-full">
+                  <CardHeader>
+                    <div className="flex justify-between items-start mb-2">
+                      <CardTitle className="text-xl">{item.name}</CardTitle>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        item.impact === 'Critical' ? 'bg-destructive/20 text-destructive' :
+                        item.impact === 'Very High' ? 'bg-orange-100 text-orange-700' :
+                        'bg-yellow-100 text-yellow-700'
+                      }`}>
+                        {item.impact} Impact
                       </div>
-                      {item.reusable && (
-                        <div className="flex items-center gap-1">
-                          <div className="h-4 w-4 text-secondary">🔄</div>
-                          <span className="text-sm">Reusable</span>
-                        </div>
-                      )}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    <CardDescription>{item.category}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div>
+                        <div className="font-medium text-sm mb-1">Disposal Method:</div>
+                        <div className="text-sm text-muted-foreground">{item.disposal}</div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1">
+                          <Recycle className="h-4 w-4 text-primary" />
+                          <span className="text-sm">Recyclable</span>
+                        </div>
+                        {item.reusable && (
+                          <div className="flex items-center gap-1">
+                            <div className="h-4 w-4 text-secondary">🔄</div>
+                            <span className="text-sm">Reusable</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
