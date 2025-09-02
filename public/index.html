@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCycle - Electronic Waste Management Platform</title>
+    <meta name="description" content="Comprehensive e-waste management platform with recycling center directory, disposal guides, and planning tools. Find responsible ways to dispose of electronics and reduce environmental impact.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>🌱 EcoCycle</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#encyclopedia" class="nav-link">Encyclopedia</a></li>
+                <li><a href="#centers" class="nav-link">Recycling Centers</a></li>
+                <li><a href="#planner" class="nav-link">Planner</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Responsible Electronic Waste Management</h1>
+                <p>Your comprehensive guide to electronic waste disposal, recycling centers, and sustainable practices.</p>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search for electronics (e.g., smartphone, laptop, battery...)">
+                    <button onclick="searchItems()" class="search-btn">🔍 Search</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>50M+</h3>
+                        <p>Tons of e-waste generated annually</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>20%</h3>
+                        <p>E-waste properly recycled globally</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>1000+</h3>
+                        <p>Recycling centers in our directory</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>95%</h3>
+                        <p>Materials can be recovered</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Encyclopedia Section -->
+        <section id="encyclopedia" class="encyclopedia-section">
+            <div class="container">
+                <h2>E-Waste Encyclopedia</h2>
+                <p>Discover how to properly dispose of your electronic devices</p>
+
+                <div class="filters">
+                    <select id="categoryFilter" onchange="filterItems()">
+                        <option value="all">All Categories</option>
+                        <option value="mobile">Mobile Devices</option>
+                        <option value="computers">Computers & IT</option>
+                        <option value="appliances">Household Appliances</option>
+                        <option value="entertainment">Entertainment Electronics</option>
+                        <option value="components">Components & Parts</option>
+                        <option value="office">Office Equipment</option>
+                    </select>
+                    
+                    <select id="impactFilter" onchange="filterItems()">
+                        <option value="all">All Impact Levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="very-high">Very High</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div class="items-grid" id="itemsGrid">
+                    <!-- Items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recycling Centers Section -->
+        <section id="centers" class="centers-section">
+            <div class="container">
+                <h2>Recycling Centers Directory</h2>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <h3>🗺️ Interactive Map</h3>
+                        <p>Find certified e-waste recycling centers near you</p>
+                    </div>
+                </div>
+                
+                <div class="centers-list" id="centersList">
+                    <!-- Centers will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Planner Section -->
+        <section id="planner" class="planner-section">
+            <div class="container">
+                <h2>Waste Management Planner</h2>
+                
+                <div class="planner-grid">
+                    <div class="todo-panel">
+                        <h3>📋 To-Do List</h3>
+                        <div class="add-task">
+                            <input type="text" id="taskInput" placeholder="Add new disposal task...">
+                            <button onclick="addTask()" class="add-btn">Add Task</button>
+                        </div>
+                        <div class="tasks-list" id="tasksList">
+                            <!-- Tasks will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-panel">
+                        <h3>📅 Calendar</h3>
+                        <div class="calendar-controls">
+                            <button onclick="previousMonth()" class="nav-btn">←</button>
+                            <h4 id="currentMonth"></h4>
+                            <button onclick="nextMonth()" class="nav-btn">→</button>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education-section">
+            <div class="container">
+                <h2>Educational Resources</h2>
+                
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <h3>🔧 DIY Electronics Repair</h3>
+                        <p>Learn basic repair techniques to extend your device's lifespan before disposal.</p>
+                    </article>
+                    
+                    <article class="article-card">
+                        <h3>♻️ The E-Waste Crisis</h3>
+                        <p>Understanding the environmental impact of improper electronic waste disposal.</p>
+                    </article>
+                    
+                    <article class="article-card">
+                        <h3>🌱 Sustainable Tech Practices</h3>
+                        <p>How to make environmentally conscious decisions when buying and using electronics.</p>
+                    </article>
+                    
+                    <article class="article-card">
+                        <h3>🔄 Upcycling Electronics</h3>
+                        <p>Creative ways to repurpose old electronics instead of throwing them away.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 EcoCycle. Making electronic waste management accessible and responsible.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
